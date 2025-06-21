@@ -21,7 +21,7 @@ public class ExpenseService {
     @Autowired
     private UserRepository userRepository;
     
-    // Create a new expense
+   
     public Expense createExpense(Expense expense, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
         
@@ -33,17 +33,17 @@ public class ExpenseService {
         return expenseRepository.save(expense);
     }
     
-    // Get all expenses for a user
+    
     public List<Expense> getExpensesByUserId(Long userId) {
         return expenseRepository.findByUserIdOrderByExpenseDateDesc(userId);
     }
     
-    // Get expense by ID (only if it belongs to the user)
+    
     public Optional<Expense> getExpenseByIdAndUserId(Long expenseId, Long userId) {
         return expenseRepository.findByIdAndUserId(expenseId, userId);
     }
     
-    // Update expense
+   
     public Expense updateExpense(Long expenseId, Expense updatedExpense, Long userId) {
         Optional<Expense> existingExpenseOpt = expenseRepository.findByIdAndUserId(expenseId, userId);
         
@@ -53,7 +53,7 @@ public class ExpenseService {
         
         Expense existingExpense = existingExpenseOpt.get();
         
-        // Update fields
+        
         existingExpense.setTitle(updatedExpense.getTitle());
         existingExpense.setDescription(updatedExpense.getDescription());
         existingExpense.setAmount(updatedExpense.getAmount());
@@ -63,7 +63,7 @@ public class ExpenseService {
         return expenseRepository.save(existingExpense);
     }
     
-    // Delete expense
+    
     public void deleteExpense(Long expenseId, Long userId) {
         Optional<Expense> expenseOpt = expenseRepository.findByIdAndUserId(expenseId, userId);
         
@@ -74,18 +74,17 @@ public class ExpenseService {
         expenseRepository.deleteById(expenseId);
     }
     
-    // Get expenses by category
+    
     public List<Expense> getExpensesByCategory(Long userId, String category) {
         return expenseRepository.findByUserIdAndCategoryOrderByExpenseDateDesc(userId, category);
     }
     
-    // Get expenses within date range
+  
     public List<Expense> getExpensesByDateRange(Long userId, LocalDate startDate, LocalDate endDate) {
         return expenseRepository.findByUserIdAndExpenseDateBetweenOrderByExpenseDateDesc(
                 userId, startDate, endDate);
     }
-    
-    // Get current month expenses
+   
     public List<Expense> getCurrentMonthExpenses(Long userId) {
         YearMonth currentMonth = YearMonth.now();
         LocalDate startDate = currentMonth.atDay(1);
@@ -94,13 +93,13 @@ public class ExpenseService {
         return getExpensesByDateRange(userId, startDate, endDate);
     }
     
-    // Get total expenses for user
+   
     public BigDecimal getTotalExpenses(Long userId) {
         BigDecimal total = expenseRepository.getTotalExpensesByUserId(userId);
         return total != null ? total : BigDecimal.ZERO;
     }
     
-    // Get total expenses for current month
+   
     public BigDecimal getCurrentMonthTotal(Long userId) {
         YearMonth currentMonth = YearMonth.now();
         LocalDate startDate = currentMonth.atDay(1);
@@ -111,23 +110,23 @@ public class ExpenseService {
         return total != null ? total : BigDecimal.ZERO;
     }
     
-    // Get expense statistics for dashboard
+    
     public Map<String, Object> getExpenseStatistics(Long userId) {
         Map<String, Object> stats = new HashMap<>();
         
-        // Total expenses
+       
         BigDecimal totalExpenses = getTotalExpenses(userId);
         stats.put("totalExpenses", totalExpenses);
         
-        // Current month total
+        
         BigDecimal currentMonthTotal = getCurrentMonthTotal(userId);
         stats.put("currentMonthTotal", currentMonthTotal);
         
-        // Total count
+        
         long totalCount = expenseRepository.countByUserId(userId);
         stats.put("totalCount", totalCount);
         
-        // Average expense
+        
         BigDecimal averageExpense = totalCount > 0 ? 
                 totalExpenses.divide(BigDecimal.valueOf(totalCount), 2, BigDecimal.ROUND_HALF_UP) : 
                 BigDecimal.ZERO;
@@ -136,7 +135,7 @@ public class ExpenseService {
         return stats;
     }
     
-    // Get expenses grouped by category (for charts)
+   
     public Map<String, BigDecimal> getExpensesByCategory(Long userId) {
         List<Object[]> results = expenseRepository.getExpensesByCategoryForUser(userId);
         Map<String, BigDecimal> categoryExpenses = new HashMap<>();
