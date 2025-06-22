@@ -45,7 +45,7 @@ const ExpenseList = ({ expenses, loading, onEdit, onDelete, filteredExpenses }) 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'USD'
+      currency: 'MAD'
     }).format(amount || 0);
   };
 
@@ -99,11 +99,11 @@ const ExpenseList = ({ expenses, loading, onEdit, onDelete, filteredExpenses }) 
           >
             <div className="flex items-center justify-between">
               <div className="flex-1">
-                <div className="flex items-center space-x-3 mb-2">
+                <div className="flex items-center space-x-5 mb-2">
                   <h3 className="font-semibold text-gray-900">
                     {expense.title}
                   </h3>
-                  <span className={`px-2 py-1 rounded text-xs font-medium ${getCategoryColor(expense.category)}`}>
+                  <span className={`px-4 py-1 rounded text-xs font-small ${getCategoryColor(expense.category)}`}>
                     {expense.category}
                   </span>
                 </div>

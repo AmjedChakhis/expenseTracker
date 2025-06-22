@@ -17,7 +17,7 @@ const StatsCards = ({ stats, loading }) => {
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'USD'
+      currency: 'MAD'
     }).format(amount || 0);
   };
 

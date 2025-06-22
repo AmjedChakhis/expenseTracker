@@ -20,9 +20,9 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initializeAuth = () => {
       try {
-        const token = authService.getToken();
+         const token = authService.getToken(); 
         const currentUser = authService.getCurrentUser();
-        
+         
         if (token && currentUser) {
           setUser(currentUser);
           setIsAuthenticated(true);
