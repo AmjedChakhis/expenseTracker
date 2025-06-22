@@ -29,7 +29,7 @@ const Dashboard = () => {
     loadStats();
   }, []);
 
-  // Filter expenses when category changes
+  
   useEffect(() => {
     filterExpensesByCategory();
   }, [expenses, selectedCategory]);

@@ -1,3 +1,4 @@
+// src/components/expense/CategoryFilter.jsx - Enhanced Minimalistic Version
 import React from 'react';
 
 const CategoryFilter = ({ selectedCategory, onCategoryChange, expenseStats }) => {
@@ -15,23 +16,6 @@ const CategoryFilter = ({ selectedCategory, onCategoryChange, expenseStats }) =>
     'Travel'
   ];
 
-  // Get category colors
-  const getCategoryColor = (category) => {
-    const colors = {
-      All: 'bg-gray-100 text-gray-700 border-gray-300',
-      Food: 'bg-red-50 text-red-600 border-red-200',
-      Transportation: 'bg-blue-50 text-blue-600 border-blue-200',
-      Entertainment: 'bg-purple-50 text-purple-600 border-purple-200',
-      Healthcare: 'bg-green-50 text-green-600 border-green-200',
-      Shopping: 'bg-yellow-50 text-yellow-600 border-yellow-200',
-      Utilities: 'bg-gray-50 text-gray-600 border-gray-200',
-      Education: 'bg-indigo-50 text-indigo-600 border-indigo-200',
-      Travel: 'bg-pink-50 text-pink-600 border-pink-200',
-      General: 'bg-gray-50 text-gray-600 border-gray-200'
-    };
-    return colors[category] || colors.General;
-  };
-
   // Get count for each category
   const getCategoryCount = (category) => {
     if (category === 'All') {
@@ -40,42 +24,47 @@ const CategoryFilter = ({ selectedCategory, onCategoryChange, expenseStats }) =>
     return expenseStats ? expenseStats.filter(expense => expense.category === category).length : 0;
   };
 
+  const selectedCount = getCategoryCount(selectedCategory);
+
   return (
     <div className="mb-6">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-medium text-gray-700">Filter by Category</h3>
-        <span className="text-xs text-gray-500">
-          {selectedCategory === 'All' ? 'Showing all expenses' : `Showing ${selectedCategory} expenses`}
+      <div className="flex items-center justify-between mb-3">
+        <label htmlFor="category-filter" className="text-sm font-medium text-gray-700">
+          Category Filter
+        </label>
+        <span className="text-sm text-gray-500">
+          {selectedCount} {selectedCount === 1 ? 'expense' : 'expenses'}
         </span>
       </div>
       
-      <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
-        {categories.map((category) => {
-          const count = getCategoryCount(category);
-          const isSelected = selectedCategory === category;
-          const colorClasses = getCategoryColor(category);
-          
-          return (
-            <button
-              key={category}
-              onClick={() => onCategoryChange(category)}
-              className={`m-1 inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium border transition-all duration-200 ${
-          isSelected 
-            ? 'ring-2 ring-blue-500 ring-offset-1 ' + colorClasses
-            : colorClasses + ' hover:shadow-md hover:scale-105'
-        }`}
-            >
-              {category}
-              {count > 0 && (
-          <span className={`ml-2 px-2 py-0.5 rounded-full text-xs ${
-            isSelected ? 'bg-white bg-opacity-70' : 'bg-white bg-opacity-50'
-          }`}>
-                  {count}
-                </span>
-              )}
-            </button>
-          );
-        })}
+      <div className="relative">
+        <select
+          id="category-filter"
+          value={selectedCategory}
+          onChange={(e) => onCategoryChange(e.target.value)}
+          className="w-full md:w-64 px-4 py-3 bg-white border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm font-medium text-gray-900 cursor-pointer transition-all duration-200 hover:border-gray-300 appearance-none pr-10"
+        >
+          {categories.map((category) => {
+            const count = getCategoryCount(category);
+            return (
+              <option key={category} value={category}>
+                {category} ({count})
+              </option>
+            );
+          })}
+        </select>
+        
+        {/* Custom dropdown arrow */}
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+          <svg
+            className="h-5 w-5 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
       </div>
     </div>
   );
