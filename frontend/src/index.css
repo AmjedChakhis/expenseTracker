@@ -419,7 +419,7 @@ button:focus {
 
 .category-filter-select:hover {
   border-color: #d1d5db;
-  box-shadow: 0 1px 3px 0 rgba(82, 146, 223, 0.1);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
 }
 
 .category-filter-select:focus {
@@ -439,13 +439,12 @@ button:focus {
   background-color: #f3f4f6;
 }
 
-/* Mobile responsive */
+
 @media (max-width: 768px) {
   .category-filter-select {
     max-width: 100%;
   }
 }
-/* Clean select dropdown styling */
 select.category-filter-select {
   background-color: white;
   border: 2px solid #e5e7eb;
