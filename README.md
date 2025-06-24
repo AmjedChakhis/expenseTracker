@@ -15,7 +15,7 @@ A full-stack web application for tracking personal expenses with analytics and u
 - **Expense Management**: Add, view, edit, and delete expenses
 - **Categorization**: Organize expenses by categories (Food, Transportation, Entertainment, etc.)
 - **Search & Filter**: Find expenses by date, category, or amount range
-<img src="/addnew.png" alt="My Image" width="900"/>
+<img src="/addnew.png" alt="My Image" width="700"/>
 
 ### 🔐 Authentication & Security
 - User registration and login with JWT authentication
@@ -31,10 +31,11 @@ A full-stack web application for tracking personal expenses with analytics and u
 - Category-wise expense breakdown 
 - Monthly spending trends 
 - Statistical summaries (Total, Average, Monthly totals)
+ <img src="./analytics.png" alt="My Image" width="600"/> 
+<img src="./stats.png" alt="My Image" width="600"/> 
 
 ### 💻 User Experience
 - Responsive design for desktop and mobile
-- Modern UI with Tailwind CSS
 - Real-time form validation
 - Loading states and error handling
 - Intuitive expense filtering and categorization
@@ -60,11 +61,6 @@ A full-stack web application for tracking personal expenses with analytics and u
 ### Testing & Quality Assurance
 - **Backend Testing**: Comprehensive JUnit 5 test suite
 - **Frontend Testing**: Jest & React Testing Library
-
-### Containerization
-- **Container Runtime**: Podman/Docker
-- **Orchestration**: Docker Compose
-- **Web Server**: Nginx (for frontend)
 
 ## 📁 Project Structure
 
