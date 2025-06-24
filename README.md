@@ -146,11 +146,11 @@ npm install
 # Start development server
 npm run dev
 
-# Frontend will start on http://localhost:3000
+# Frontend will start on http://localhost:5173
 ```
 
 ### 5. Access Application
-- **Frontend**: http://localhost:3000
+- **Frontend**: http://localhost:5173
 - **Backend API**: http://localhost:8080/api
 - **API Health Check**: http://localhost:8080/actuator/health
 
