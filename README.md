@@ -7,21 +7,29 @@ A full-stack web application for tracking personal expenses with analytics and u
 ## 🚀 Features
 
 ### ✨ Core Functionality
+- **Financial Overview**: Dashboard with spending summaries and trends
+
+<img src="/dashboard.png" alt="My Image" width="900"/>
+
+ 
 - **Expense Management**: Add, view, edit, and delete expenses
 - **Categorization**: Organize expenses by categories (Food, Transportation, Entertainment, etc.)
-- **Financial Overview**: Dashboard with spending summaries and trends
 - **Search & Filter**: Find expenses by date, category, or amount range
+<img src="/addnew.png" alt="My Image" width="900"/>
 
 ### 🔐 Authentication & Security
 - User registration and login with JWT authentication
 - Secure password hashing with BCrypt
 - Protected routes and user session management
 - Token-based API authentication
+<img src="./signup.png" alt="My Image" width="300"/> 
+<img src="./signin.png" alt="My Image" width="300"/>
+
 
 ### 📊 Analytics & Insights
 - Interactive charts showing spending patterns
-- Category-wise expense breakdown (Pie charts)
-- Monthly spending trends (Line/Bar charts)
+- Category-wise expense breakdown 
+- Monthly spending trends 
 - Statistical summaries (Total, Average, Monthly totals)
 
 ### 💻 User Experience
