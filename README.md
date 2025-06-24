@@ -103,8 +103,8 @@ expense-tracker/
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/expense-tracker.git
-cd expense-tracker
+git clone https://github.com/AmjedChakhis/expenseTracker.git
+cd expense-tracker-app
 ```
 
 ### 2. Database Setup
