@@ -2,10 +2,7 @@
 
 A full-stack web application for tracking personal expenses with analytics and user authentication. Built with Spring Boot, PostgreSQL, and React.
 
-![Expense Tracker](https://img.shields.io/badge/Version-1.0.0-blue)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-green)
-![React](https://img.shields.io/badge/React-18.0+-blue)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)
+![Expense Tracker](./empty.png)
 
 ## 🚀 Features
 
